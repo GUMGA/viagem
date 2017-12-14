@@ -1,0 +1,97 @@
+<div ng-controller="BaseController">
+    <div class="gumga-layout">
+        <menu-shrink menu="gumgaMenu"
+                     keys="keysJsonUrl"
+                     logo="resources/images/logo.png"
+                     class="fixed"
+                     theme="dark">
+        </menu-shrink>
+        <header class="gl-header">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" style="cursor: pointer;" data-ng-click="navCollapse()">
+                            Controle de Viagem
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="gmd nav navbar-nav organizations" title="Trocar de Organização">
+                            <li class="personalize dropdown">
+                                <a href="" class="gmd dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">domain</i>
+                                </a>
+                                <ul class="gmd dropdown-menu" style="padding: 0px;">
+                                    <li>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control gmd" style="padding: 6px 14px;" data-ng-model="org_search" placeholder="Pesquisar...">
+                                            <div class="bar"></div>
+                                        </div>
+                                    </li>
+                                    <li data-ng-repeat="org in organizations | filter: org_search">
+                                        <a href="" ng-click="changeOrganization(org)" >{{org.name}}
+                                            <span class="glyphicon glyphicon-ok" ng-show="org.name == orgAtual.organization || org.name == orgAtual.name"></span>
+                                        </a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="gmd nav navbar-nav organizations" title="Trocar de tema">
+                            <li class="personalize dropdown">
+                                <a href="" class="gmd dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">color_lens</i>
+                                </a>
+                                <ul class="gmd dropdown-menu">
+                                    <div class="row">
+                                        <div class="col-lg-3 gmd-pick-color-col">
+                                            <div class="gmd-pick-color-container american" uib-tooltip="American" tooltip-placement="bottom" ng-click="setTheme('american')">
+                                                <div class="gmd-pick-color circle american"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 gmd-pick-color-col">
+                                            <div  class="gmd-pick-color-container jamaica" uib-tooltip="Jamaica" tooltip-placement="bottom" ng-click="setTheme('jamaica')">
+                                                <div class="gmd-pick-color circle jamaica"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 gmd-pick-color-col">
+                                            <div  class="gmd-pick-color-container africa" uib-tooltip="África" tooltip-placement="bottom" ng-click="setTheme('africa')">
+                                                <div class="gmd-pick-color circle africa"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 gmd-pick-color-col">
+                                            <div  class="gmd-pick-color-container tailandia" uib-tooltip="Tailândia" tooltip-placement="bottom" ng-click="setTheme('tailandia')">
+                                                <div class="gmd-pick-color circle tailandia"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{info.name}} <span class="caret"></span>
+                            </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a>Trocar senha</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a style="cursor: pointer" ng-click="logout()">Sair</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="gl-main">
+            <div class="container-fluid content">
+                <div ui-view></div>
+            </div>
+        </main>
+    </div>
+</div>

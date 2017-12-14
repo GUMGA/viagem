@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app.core">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon" sizes="72x72" href="favicon.ico">
+        <link rel="apple-touch-icon" sizes="114x114" href="favicon.ico">
+        <link rel="apple-touch-icon" href="favicon.ico">
+        <link rel="apple-touch-startup-image" href="favicon.ico">
+        <title>Gumga Viagem</title>
+        <!--<link rel="stylesheet" href="bower_components/gumga-login/src/stylesheets/login.css" />-->
+        <link rel="manifest" href="manifest.json">
+        <link rel="stylesheet" href="dist/app.min.css">
+    </head>
+    <body ng-cloak>
+        <div class="loading"></div>
+
+        <div ui-view style="height: 100%" gumga-translate="pt-br" ></div>
+        <script src="dist/app.min.js">buildall</script>
+    </body>
+</html>

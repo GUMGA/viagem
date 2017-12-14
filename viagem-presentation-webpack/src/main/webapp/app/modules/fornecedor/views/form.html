@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel gmd">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                        Fornecedor
+                    </div>
+                    <div class="col-md-6">
+                        <span class=" btn pull-right" popover-placement="bottom-right" popover-trigger="'outsideClick'" popover-title="Componentes Utilizados."
+                              uib-popover-html="htmlPopover">
+                            <i class="material-icons">info_outline</i>
+                        </span> 
+                    </div>
+                </div>
+            </div>            
+			<div class="panel-body">
+                <form name="FornecedorForm" class="form-space" gumga-form novalidate>
+                    <div class="row" style="margin-bottom: 3%">
+                          <div class="col-md-4">
+                            <div class="radio" style="display: inline-block;margin-right: 5%">
+                                <label>
+                                    <input type="radio" name="optionsRadios" ng-model="fornecedor.data.tipoPessoa" ng-change="change()" class="gmd" value="FISICO" checked>
+                                    <span class="box"></span>
+                                    Pessoa Física
+                                </label>
+                            </div>
+                            <div class="radio" style="display: inline-block;">
+                                <label>
+                                    <input type="radio" name="optionsRadios" ng-model="fornecedor.data.tipoPessoa" ng-change="change()" class="gmd" value="JURIDICO" checked>
+                                    <span class="box"></span>
+                                    Pessoa Jurídica
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <gmd-input>
+                                <input type="text" class="form-control gmd captalize" ng-model="fornecedor.data.nome" name="nome" field="nome" gumga-error gumga-required />
+                                <span class="bar"></span>
+                                <label for="nome" class="control-label" gumga-translate-tag="fornecedor.nome">nome</label>
+                            </gmd-input>
+                        </div>
+                        <div class="col-md-6">
+                            <gmd-input ng-if="fornecedor.data.tipoPessoa == 'FISICO' ">
+                                <input type="text" class="form-control gmd captalize" ng-model="fornecedor.data.documento" name="documento" ui-br-cpf-mask />
+                                <span class="bar"></span>
+                                <label for="documento" class="control-label" gumga-translate-tag="fornecedor.documento{{fornecedor.data.tipoPessoa}}">documento</label>
+                            </gmd-input>
+                            <gmd-input ng-if="fornecedor.data.tipoPessoa == 'JURIDICO' ">
+                                <input type="text" class="form-control gmd captalize" ng-model="fornecedor.data.documento" name="documento" ui-br-cnpj-mask />
+                                <span class="bar"></span>
+                                <label for="documento" class="control-label" gumga-translate-tag="fornecedor.documento{{fornecedor.data.tipoPessoa}}">documento</label>
+                            </gmd-input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <gmd-input>
+                                <input type="email" class="form-control gmd" ng-model="fornecedor.data.email.value" name="email" ng-pattern='/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' gumga-validate-type gumga-error/>
+                                <span class="bar"></span>
+                                <label for="email" class="control-label" gumga-translate-tag="fornecedor.email">email</label>
+                            </gmd-input>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-12">
+                            <gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"></gumga-errors>
+                        </div>
+                    </div>
+                </form>
+			</div>
+            <div class="panel-footer">
+                <gumga-form-buttons
+                        back="fornecedor.list"
+                        submit="salvar(fornecedor.data)"
+                        position="right"
+                        valid="FornecedorForm.$valid"
+                        confirm-dirty="true"
+                        continue="continue">
+                </gumga-form-buttons>
+            </div>
+		</div>
+	</div>
+</div>

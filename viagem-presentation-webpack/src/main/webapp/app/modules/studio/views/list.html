@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel gmd">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-md-5">
+						<button ng-if="!studioLink.nome" type="button" title="Novo" ui-sref="studio.insert" class="btn btn-primary gmd fab fixed">
+							<i class="material-icons">add</i>
+						</button>
+						<button ng-if="studioLink.nome" type="button" title="Editar" ui-sref="studio.edit({id: studioLink.id })" class="btn btn-primary gmd fab fixed">
+							<i class="material-icons">edit</i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body" style="margin-bottom: 5%">
+				<div style="text-align:center;" id="pointer" ng-if="load">
+                  <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                  </svg>
+					<!--<img src="./resources/images/ring.svg" alt="">-->
+				</div>
+
+				<div class="" id="iframe-container" ng-show="!load"></div>
+				<div style="text-align:center;" ng-if="semUrl">
+					<h4 class="wmf-text-ellipsis">Sem Dashboard cadastrado, Favor incluir um Dashboard</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

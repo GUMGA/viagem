@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+            <div class="col-md-5">
+                <h5 class="title-page">
+                    <i class="material-icons" middle>supervisor_account</i>
+                    <p>Colaboradores</p>
+                </h5>
+            </div>
+            <div class="col-md-7">
+                <gumga-query use-gquery="true" class="gmd" search="colaborador.methods.searchWithGQuery(field,param)" advanced-search="colaborador.methods.searchWithGQuery(param)"
+                    saved-filters="colaborador.methods.getQuery(page)">
+                    <search-field label="Nome" field="nome"></search-field>
+                    <search-field label="Cargo" field="cargo"></search-field>
+                    <advanced-search-field type="string" label="Nome" field="nome"></advanced-search-field>
+                    <advanced-search-field type="string" label="Cargo" field="cargo"></advanced-search-field>
+                </gumga-query>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-12">
+                <gumga-list sort="colaborador.methods.sort(field, dir)" class="table-hover table-condensed" 
+                            data="colaborador.data" page-align="flex-end"
+                            page-position="bottom" configuration="tableConfig" 
+                            page-model="page" page-size="colaborador.pageSize" count="colaborador.count"
+                            on-page-change="colaborador.methods.searchWithGQuery(colaborador.lastGQuery, page)">
+                </gumga-list>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<gmd-fab force-click="false" fixed opened="selectedValues.length > 0">
+    <button ng-if="selectedValues.length == 0" class="btn-primary gmd-ripple" ui-sref="fornecedor.insert">
+        <span class="material-icons">add</span>
+    </button>
+    <button ng-if="selectedValues.length > 0" class="btn-warning gmd-ripple">
+        <span class="material-icons">view_headline</span>
+    </button>
+    <ul ng-class="{'disabled-fab': selectedValues.length <= 0}">
+        <li class="btn-danger" ng-click="fornecedor.methods.delete(selectedValues)">
+            <span class="visible">Remover</span>
+            <i class="material-icons gmd-ripple">delete</i>
+        </li>
+    </ul>
+</gmd-fab>

@@ -1,0 +1,27 @@
+{
+  "name": "Sistema Viagem",
+  "short_name": "Viagem",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Gumga Sistema de Viagem.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/ico"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://gumga.com.br/viagem",
+      "id": "br.com.gumga.viagem"
+    },
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=viagemGumga",
+      "id": "br.com.gumga.viagem"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+[
+    {
+        "type": "item",
+        "label": "Página inicial",
+        "state": "welcome.home",
+        "icon": "home"
+    },
+    {
+        "type": "item",
+        "label": "Destino",
+        "state": "destino.list",
+        "key": "CRUD-Destino",
+        "icon": "place"
+    },
+    {
+        "type": "item",
+        "label": "Movimento",
+        "state": "movimento.list",
+        "key": "CRUD-Movimento",
+        "icon": "attach_money"
+    },
+    {
+        "type": "item",
+        "label": "Rota",
+        "state": "rota.list",
+        "key": "CRUD-Rota",
+        "icon": "directions"
+    },
+    {
+        "type": "item",
+        "label": "Viagem",
+        "state": "viagem.list",
+        "key": "CRUD-Viagem",
+        "icon": "flight"
+    },
+    {
+        "type": "item",
+        "label": "Fornecedor",
+        "state": "fornecedor.list",
+        "key": "CRUD-Fornecedor",
+        "icon": "business"
+    },
+    {
+        "type": "item",
+        "label": "Colaborador",
+        "state": "colaborador.list",
+        "key": "CRUD-Colaborador",
+        "icon": "supervisor_account"
+    },
+    {
+        "type": "item",
+        "label": "Campo Customizavel",
+        "state": "gumgacustomfield.list",
+        "key": "CUSTOMFIELDS",
+        "icon": "playlist_add"
+    },
+    {
+        "type": "item",
+        "label": "Integração Studio",
+        "state": "studio.list",
+        "key": "CRUD-Studio",
+        "icon": "dashboard"
+    }
+]

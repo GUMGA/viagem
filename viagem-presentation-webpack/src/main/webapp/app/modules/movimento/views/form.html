@@ -1,0 +1,87 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel gmd">
+            <div class="panel-heading">
+				<div class="row">
+					<div class="col-md-6">
+                		Movimento Viagem
+					</div>
+                    <div class="col-md-6">
+                        <span class=" btn pull-right" popover-placement="bottom-right" popover-trigger="'outsideClick'" popover-title="Componentes Utilizados."
+                              uib-popover-html="htmlPopover">
+                            <i class="material-icons">info_outline</i>
+                        </span> 
+                    </div> 
+				</div>
+            </div>            
+			<div class="panel-body">
+				<form name="MovimentoForm" gumga-form novalidate>
+					<div class="row" style="margin-bottom: 3%;">
+						<div class="col-md-6">
+							<gmd-select ng-model="movimento.data.tipoMovimento"
+										placeholder=" Selecione um Tipo ">
+								<gmd-option ng-repeat="c in valueTipoMovimento" ng-value="c.value" ng-label="c.label">{{c.label}}</gmd-option>
+							</gmd-select>
+						</div>
+                        <div class="col-md-6">
+                            <gmd-input>
+                                <input type="number" class="form-control gmd" ng-model="movimento.data.valor.value" name="valor" gumga-number integer-number gumga-error gumga-required />
+                                <span class="bar"></span>
+                                <label for="valor" class="control-label" gumga-translate-tag="movimento.valor">valor</label>
+                            </gmd-input>
+                        </div>
+					</div>		
+					<div class="row" style="margin-bottom: 3%;">
+						<div class="col-md-6">
+							<label gumga-translate-tag="movimento.fornecedor">fornecedor</label>
+							<gumga-many-to-one
+									name="fornecedor"
+									value="movimento.data.fornecedor"
+									search-method="searchSupplierF(param)"
+									field="nome"
+									editable="false"
+									authorize-add="false"
+									display-info="false"
+									post-method="funcionario.methods.asyncPost(value, 'nome')">
+							</gumga-many-to-one>
+						</div>
+						<div class="col-md-6">
+							<label gumga-translate-tag="movimento.viagem">viagem</label>
+							<gumga-many-to-one
+									name="viagem"
+									value="movimento.data.viagem"
+									search-method="searchSupplierV(param)"
+									field="nome"
+									editable="false"
+									authorize-add="false"
+									display-info="false"
+									post-method="viagem.methods.asyncPost(value, 'nome')">
+							</gumga-many-to-one>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<label for="nome" gumga-translate-tag="movimento.observacao">objetivo</label>
+							<textarea ng-model="movimento.data.observacao" class="form-control gmd" gumga-counter="500"></textarea>
+						</div>
+					</div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-12">
+                            <gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"></gumga-errors>
+                        </div>
+                    </div>
+				</form>
+			</div>
+			<div class="panel-footer">
+				<gumga-form-buttons
+						back="movimento.list"
+						submit="salvar(movimento.data)"
+						position="right"
+						valid="MovimentoForm.$valid"
+						confirm-dirty="true"
+						continue="continue">
+				</gumga-form-buttons>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,158 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel gmd">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-md-6">
+						Campos Personalizados
+					</div>
+                    <div class="col-md-6">
+                        <span class=" btn pull-right" popover-placement="bottom-right" popover-trigger="'outsideClick'" popover-title="Componentes Utilizados."
+                              uib-popover-html="htmlPopover">
+                            <i class="material-icons">info_outline</i>
+                        </span> 
+                    </div>
+				</div>
+          	</div>            
+			<div class="panel-body">
+				<form name="GumgaCustomFieldForm" gumga-form novalidate>
+					<div class="row">
+						<div class="col-md-6">
+							<gmd-select
+									ng-model="gumgacustomfield.data.clazz"
+									on-update="changeClazz(option)"
+									placeholder=" Selecione uma classe ">
+								<gmd-option ng-repeat="c in clazzes" ng-value="c.value" ng-label="c.label">{{c.label}}</gmd-option>
+							</gmd-select>
+						</div>
+						<div class="col-md-6">
+							<gmd-select ng-model="gumgacustomfield.data.type"
+										on-update="changeType(option)"
+										placeholder=" Selecione um Tipo ">
+								<gmd-option ng-repeat="c in customFields" ng-value="c.value" ng-label="c.label">{{c.label}}</gmd-option>
+							</gmd-select>
+						</div>
+					</div><br>
+					<div class="row">
+						<div class="col-md-6">
+                            <gmd-input>
+								<input type="text" class="form-control gmd" ng-model="gumgacustomfield.data.name" name="nome" gumga-error />
+                                <span class="bar"></span>
+                                <label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.nome">nome</label>
+                            </gmd-input>
+						</div>
+						<div class="col-md-6">
+                            <gmd-input>
+								<input type="text" class="form-control gmd" name="description" ng-model="gumgacustomfield.data.description" gumga-error />
+                                <span class="bar"></span>
+                                <label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.description">description</label>
+                            </gmd-input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<gmd-input>
+								<input type="text" class="form-control gmd" name="description" ng-model="gumgacustomfield.data.visualizationOrder" gumga-error />
+								<span class="bar"></span>
+								<label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.visualizationOrder">visualizationOrder</label>
+							</gmd-input>
+						</div>
+						<div class="col-md-2 ">
+							<button type="button" class="btn gmd raised btn-block" ng-class="{'btn-success': gumgacustomfield.data.active, 'btn-default': !gumgacustomfield.data.active}" name="active" ng-model="gumgacustomfield.data.active" uib-btn-checkbox uib-btn-checkbox-true="true" uib-btn-checkbox-false="false">
+							<span ng-show="gumgacustomfield.data.active" gumga-translate-tag="gumgacustomfield.active">Active</span>
+							<span ng-show="!gumgacustomfield.data.active" gumga-translate-tag="gumgacustomfield.inactive">Inactive</span>
+							</button>
+						</div>
+					</div>
+					<div ng-if="gumgacustomfield.data.type == 'SELECTION'">
+						<h3 class="page-header" gumga-translate-tag="gumgacustomfield.optionsGroup">optionsGroup</h3>
+						<div class="row">
+							<div class="col-md-4">
+								<gmd-input>
+									<input type="text" class="form-control gmd" name="optionsCollection" ng-model="gumgacustomfield.data.optionsCollection" gumga-error />
+									<span class="bar"></span>
+									<label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.optionsCollection">description</label>
+								</gmd-input>
+							</div>
+							<div class="col-md-4">
+								<gmd-input>
+									<input type="text" class="form-control gmd" name="optionValueField" ng-model="gumgacustomfield.data.optionValueField" gumga-error />
+									<span class="bar"></span>
+									<label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.optionValueField">description</label>
+								</gmd-input>
+							</div>
+							<div class="col-md-4">
+								<gmd-input>
+									<input type="text" class="form-control gmd" name="optionLabelField" ng-model="gumgacustomfield.data.optionLabelField" gumga-error />
+									<span class="bar"></span>
+									<label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.optionLabelField">description</label>
+								</gmd-input>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div gumga-form-class="options">
+									<label gumga-translate-tag="gumgacustomfield.options">options</label>
+									<textarea gumga-error name="options" ng-model="gumgacustomfield.data.options" class="form-control gmd"></textarea>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label gumga-translate-tag="gumgacustomfield.example">example</label>
+								<textarea name="example" class="form-control gmd" disabled="disabled">[{"value": "1", "label": "Opção 1"}, {"value": "2", "label": "Opção 2"}]</textarea>
+							</div>
+						</div>
+					</div>
+					<h3 class="page-header" gumga-translate-tag="gumgacustomfield.scriptsGroup">scripts</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<div gumga-form-class="defaultValueScript">
+								<label gumga-translate-tag="gumgacustomfield.defaultValueScript">defaultValueScript</label>
+								<textarea gumga-error name="defaultValueScript" ng-model="gumgacustomfield.data.defaultValueScript" class="form-control gmd"></textarea>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div gumga-form-class="validationScript">
+								<label gumga-translate-tag="gumgacustomfield.validationScript">validationScript</label>
+								<textarea gumga-error name="validationScript" ng-model="gumgacustomfield.data.validationScript" class="form-control gmd"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div gumga-form-class="validationDescription">
+								<gmd-input>
+									<input type="text" class="form-control gmd" name="validationDescription" ng-model="gumgacustomfield.data.validationDescription" gumga-error />
+									<span class="bar"></span>
+									<label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.validationDescription">description</label>
+								</gmd-input>
+							</div>
+						</div>
+					</div>
+            		<h3 class="page-header" gumga-translate-tag="gumgacustomfield.translateGroup">translateGroup</h3>
+					<div class="row">
+						<div class="col-md-12">
+							<div gumga-form-class="translateKey">
+								<gmd-input>
+									<input type="text" class="form-control gmd" name="translateKey" ng-model="gumgacustomfield.data.translateKey" gumga-error />
+									<span class="bar"></span>
+									<label for="nome" class="control-label" gumga-translate-tag="gumgacustomfield.translateKey">translateKey</label>
+								</gmd-input>
+							</div>
+						</div>
+					</div>
+          		</form>
+			</div>
+			<div class="panel-footer">
+				<gumga-form-buttons
+						back="gumgacustomfield.list"
+						submit="salvar(gumgacustomfield.data)"
+						position="right"
+						valid="GumgaCustomFieldForm.$valid"
+						confirm-dirty="true"
+						continue="false">
+				</gumga-form-buttons>
+			</div>
+		</div>
+	</div>
+</div>
+

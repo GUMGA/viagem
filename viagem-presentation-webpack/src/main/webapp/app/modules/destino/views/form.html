@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel gmd">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                        Destino
+                    </div>
+                    <div class="col-md-6">
+                        <span class=" btn pull-right" popover-placement="bottom-right" popover-trigger="'outsideClick'" popover-title="Componentes Utilizados."
+                              uib-popover-html="htmlPopover">
+                            <i class="material-icons">info_outline</i>
+                        </span> 
+                    </div>    
+                </div>
+            </div>            
+			<div class="panel-body">
+                <form name="DestinoForm" gumga-form novalidate>
+                    <ul class="nav nav-tabs gmd" role="tablist" style="margin-bottom: 3%;">
+                        <li role="presentation" class="active"><a target="_self" href="#principal" aria-controls="principal" role="tab" data-toggle="tab">Dados Principais</a></li>
+                        <li role="presentation"><a href="#endereco" target="_self" aria-controls="endereco" role="tab" data-toggle="tab">Endereço</a></li>
+                        <li role="presentation" ng-show="!destino.data.gumgaCustomFields == '' "><a target="_self" href="#customField" aria-controls="customField" role="tab" data-toggle="tab">Campos Customizados</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="principal">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <gmd-input>
+                                        <input type="text" class="form-control gmd captalize" ng-model="destino.data.nome" name="nome" gumga-error gumga-required />
+                                        <span class="bar"></span>
+                                        <label for="nome" class="control-label" gumga-translate-tag="destino.nome">nome</label>
+                                    </gmd-input>
+                                </div>
+                                <div class="col-md-6">
+                                    <gmd-input>
+                                        <input type="text" class="form-control gmd" ng-model="destino.data.telefone" id="telefone" ui-br-phone-number>
+                                        <span class="bar"></span>
+                                        <label for="text" class="control-label" gumga-translate-tag="destino.telefone">telefone</label>
+                                    </gmd-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="endereco">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <gumga-address
+                                        value="destino.data.endereco"
+                                        name="endereco"
+                                        title="Preencha um endereço"
+                                        on-search-cep-success="success($value)"
+                                        street-number="true"
+                                        state-city="false"
+                                        state-city-ibge="true"
+                                        street="false">
+                                    </gumga-address>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="customField">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <gumga-custom-fields fields="destino.data"></gumga-custom-fields>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-12">
+                            <gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"></gumga-errors>
+                        </div>
+                    </div>
+                </form>
+			</div>
+            <div class="panel-footer">
+                <gumga-form-buttons
+                        back="destino.list"
+                        submit="salvar(destino.data)"
+                        position="right"
+                        valid="DestinoForm.$valid"
+                        confirm-dirty="true"
+                        continue="continue">
+                </gumga-form-buttons>
+            </div>
+		</div>
+	</div>
+</div>

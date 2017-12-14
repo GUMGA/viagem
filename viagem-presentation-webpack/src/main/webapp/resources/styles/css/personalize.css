@@ -1,0 +1,204 @@
+.captalize {
+    text-transform: capitalize;
+}
+
+img-crop canvas {
+    margin: 0 !important;
+}
+
+.gumga-layout footer.gl-footer.fixed {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.gumga-layout footer.gl-footer {
+    /*z-index: 1006;*/
+    padding: 5px 20px;
+    height: 25px;
+    color: #FFF;
+    font-size: 12px;
+    background-color: #2196f3;
+}
+
+.radio input[type=radio].gmd + .box:after {
+    z-index: 998 !important;
+}
+
+.radio input[type=radio].gmd + .box:before {
+    z-index: 999 !important;
+}
+
+.header-login nav.login-nav {
+    background-color: transparent;
+    border: 0
+}
+
+.login-container {
+    background: url('../../images/background.png');
+}
+
+.heading-gumga {
+    background-color: transparent !important;
+}
+
+.input-login {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    color: #626262;
+    padding: 10px 15px;
+    border-top: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    border-left: 6px solid #e53d57;
+    outline: 0;
+    -moz-transition: .3s all;
+    -o-transition: .3s all;
+    -webkit-transition: .3s all;
+    transition: .3s all;
+}
+
+.panel-footer {
+    background-color: transparent !important;
+}
+
+.gumga-logo {
+    background: url('../../images/gumgaLogo.png');
+}
+
+.ajax-loader {
+    background: url('../../images/ajax-loader.gif');
+}
+
+.background-test {
+    background: url('../../images/background.png');
+}
+
+.gumga-logo2 {
+    background: url('../../images/gumga.png');
+}
+
+.picture_pattern-test {
+    background: url('../../images/picture_pattern.png');
+}
+
+.form-control.gmd ~ label, gmd-select > .dropdown.gmd span, gmd-select .dropdown.gmd .placeholder, gmd-select .dropdown.gmd label.floating-dropdown {
+    font-size: 1rem !important;
+    line-height: 1.42857143 !important;;
+}
+
+.col-md-4 {
+    margin-top: 10px;
+}
+
+menu-shrink .menu-header img {
+    margin-left: 5px;
+}
+
+div[class*="col-"] > label {
+    color: #999 !important;
+    font-weight: 400 !important;
+    font-size: 13.6px !important;
+}
+
+img1 {
+    background: url(../../images/logo.png);
+}
+
+.personalize.gmd.dropdown-menu {
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+    padding: 24px 16px 16px;
+}
+
+.gmd-pick-color-col {
+    border-radius: 24px;
+    height: 48px;
+    width: 76px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.gmd-pick-color.circle {
+    -webkit-border-radius: 27px;
+    border-radius: 27px;
+    height: 48px;
+    margin: 4px;
+    width: 48px;
+}
+
+.gmd-pick-color-container {
+    width: 58px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+}
+
+.gmd-pick-color.circle.american {
+    background-color: #F44336;
+}
+
+.gmd-pick-color-container.american:hover {
+    border: 1px solid #F44336;
+}
+
+.gmd-pick-color.circle.jamaica {
+    background-color: #4CAF50;
+}
+
+.gmd-pick-color-container.jamaica:hover {
+    border: 1px solid #4CAF50;
+}
+
+.gmd-pick-color.circle.africa {
+    background-color: #00796B;
+}
+
+.gmd-pick-color-container.africa:hover {
+    border: 1px solid #00796B;
+}
+
+.gmd-pick-color.circle.tailandia {
+    background-color: #512DA8;
+}
+
+.gmd-pick-color-container.tailandia:hover {
+    border: 1px solid #512DA8;
+}
+
+.personalize.dropdown .gmd.dropdown-menu {
+    display: block !important;
+    visibility: hidden;
+    overflow: hidden;
+    min-width: 1px;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    transition: min-width .2s cubic-bezier(0.0,0.0,0.2,1),
+    padding .2s cubic-bezier(0.0,0.0,0.2,1),
+    height .2s cubic-bezier(0.0,0.0,0.2,1) !important;
+}
+
+.personalize.dropdown.open .gmd.dropdown-menu {
+    display: block !important;
+    visibility: visible;
+    transition: all 2s;
+    opacity: 1;
+    min-width: 160px;
+    width: 160px;
+    height: 200px;
+    padding: 24px 16px 16px;
+}
+
+.tooltip-inner {
+    color: #fff;
+    background: rgba(97,97,97,0.992);
+    /*box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);*/
+    border-radius: 2px;
+}
+
+.tooltip-arrow {
+    display: none !important;
+}

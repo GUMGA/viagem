@@ -1,0 +1,176 @@
+{
+  "pessoa": {
+    "title": "Pessoa",
+    "menulabel": "Pessoa",
+    "edit": "Editar Pessoa",
+    "insert": "Inserir Pessoa",
+    "list": "Consulta Pessoa",
+    "email": "E-mail",
+    "nome": "Nome",
+    "id": "id"
+  },
+  "colaborador": {
+    "title": "Colaborador",
+    "menulabel": "Colaborador",
+    "edit": "Editar Colaborador",
+    "numeroCnh": "Número da CNH",
+    "validadeCnh": "Validade da CNH",
+    "insert": "Inserir Colaborador",
+    "list": "Consulta Colaborador",
+    "id": "id",
+    "image": "Foto Colaborador",
+    "telefone": "Celular",
+    "nome": "Nome",
+    "cargo": "Cargo"
+  },
+  "fornecedor": {
+    "title": "Fornecedor",
+    "menulabel": "Fornecedor",
+    "edit": "Editar Fornecedor",
+    "insert": "Inserir Fornecedor",
+    "list": "Consulta Fornecedor",
+    "documentoJURIDICO": "CNPJ",
+    "documentoFISICO": "CPF",
+    "documento": "Documento",
+    "tipoPessoa": "Tipo Fornecedor",
+    "email": "Email",
+    "id": "id",
+    "nome": "Nome"
+  },
+  "viagem": {
+    "title": "Viagem",
+    "menulabel": "Viagem",
+    "edit": "Editar Viagem",
+    "insert": "Inserir Viagem",
+    "list": "Consulta Viagem",
+    "id": "id",
+    "rota": "Rota",
+    "objetivo": "Objetivo",
+    "colaborador": "Colaborador",
+    "nome": "Nome"
+  },
+  "rota": {
+    "title": "Rota",
+    "menulabel": "Rota",
+    "edit": "Editar Rota",
+    "insert": "Inserir Rota",
+    "nome": "Nome",
+    "list": "Consulta Rota",
+    "observacao": "Observação",
+    "id": "id",
+    "destino": "Destino"
+  },
+  "movimento": {
+    "title": "Movimento",
+    "menulabel": "Movimento",
+    "edit": "Editar Movimento",
+    "insert": "Inserir Movimento",
+    "list": "Consulta Movimento",
+    "id": "id",
+    "viagem": "Viagem",
+    "tipomovimento": "Tipo Movimento",
+    "fornecedor": "Fornecedor",
+    "valor": "Valor",
+    "observacao": "Observação"
+  },
+  "destino": {
+    "title": "Destino",
+    "menulabel": "Destino",
+    "edit": "Editar Destino",
+    "primeirocampo": "Teste",
+    "destino": "Destino",
+    "nome": "Nome",
+    "insert": "Inserir Destino",
+    "list": "Consulta Destino",
+    "telefone": "Telefone",
+    "id": "id"
+  },
+  "address": {
+    "cep": "CEP",
+    "numero": "Número",
+    "bairro": "Bairro",
+    "uf": "Estado",
+    "pais": "País",
+    "complemento": "Complemento",
+    "logradouro": "Logradouro",
+    "tipologradouro": "Tipo de Logradouro",
+    "localidade": "Localização"
+  },
+  "formbuttons": {
+    "inserir": "Continuar inserindo"
+  },
+  "table": {
+    "select": "Selecionar Todos",
+    "clean": "Limpar pesquisa"
+  },
+  "advanced": {
+    "gt": "maior que",
+    "ge": "maior igual",
+    "lt": "menor que",
+    "le": "menor igual",
+    "eq": "igual ",
+    "ne": "diferente de",
+    "in": "faz parte de",
+    "not_in": "não faz parte de",
+    "contains": "contém",
+    "starts_with": "começa com",
+    "ends_with": "termina com",
+    "not_contains": "não contém"
+  },
+  "general": {
+    "coisa": "Coisa Base",
+    "forgot": "Esqueceu sua Senha?"
+  },
+  "welcome": {
+    "menulabel": "Welcome"
+  },
+  "home": {
+    "menulabel": "Início"
+  },
+  "gumgatagdefinition": {
+    "name": "Nome",
+    "menuLabel": "Tags"
+  },
+  "configuration": {
+    "menulabel": "Configurações",
+    "gumgatagdefinition": "Tags",
+    "gumgacustomfield": "Atributos Genéricos"
+  },
+  "studio": {
+    "nome": "Link Dashboard"
+  },
+  "gumgacustomfield": {
+    "clazz": "Classe",
+    "nome": "Nome",
+    "description": "Descrição",
+    "type": "Tipo",
+    "visualizationOrder": "Ordem Visualização",
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "optionsGroup": "Grupo de opções",
+    "scriptsGroup": "Grupo de Scripts",
+    "optionsCollection": "Coleção de Opções",
+    "optionValueField": "Valor do Campo",
+    "optionLabelField": "Label do Campo",
+    "options": "Opções",
+    "example": "Exemplo",
+    "defaultValueScript": "Valor do Script Padrão",
+    "validationScript": "Script de validação",
+    "validationDescription": "Descrição da validação",
+    "translateGroup": "Grupo de Tradução",
+    "translateKey": "Chave de Tradução",
+    "nameField": "Nome Campo"
+  },
+  "f": {
+    "field": {
+      "translateKey": "Campo adicional"
+    }
+  },
+  "exception": {
+    "ConstraintViolation": "Dados sendo utilizados",
+    "OPERATION_NOT_ALLOWED": "Sem permissão",
+    "BAD_PASSWORD": "Problemas Login",
+    "NO_USER": "Problemas Login",
+    "TOKEN_EXPIRED": "Sessão Expirada"
+  }
+}

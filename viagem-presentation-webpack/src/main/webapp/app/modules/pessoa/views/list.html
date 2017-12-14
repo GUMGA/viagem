@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="panel gmd">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-5">
+                        <button type="button" title="Novo" ui-sref="pessoa.insert"
+                                class="btn btn-primary gmd fab fixed">
+                            <i class="material-icons">add</i>
+                        </button>
+                        <button type="button"
+                                class="btn gmd btn-danger"
+                                ng-disabled="!selectedValues.length > 0"
+                                ng-click="pessoa.methods.delete(selectedValues)"
+                                gumga-confirm="Deseja remover?"
+                                confirm-button-class="btn gmd btn-primary"
+                                dismiss-button-class="btn gmd btn-default">
+                            <i class="fa fa-trash"></i> Remover
+                        </button>
+                    </div>
+
+                    <div class="col-md-7">
+                        <gumga-query search="buscarProxy(param)"
+                                     advanced-search="buscarProxy(param)"
+                                     saved-filters="pessoa.methods.getQuery(page)"
+                                     use-gquery="true">
+                            <search-field label="Nome" field="nome"></search-field>
+                            <search-field label="Email" field="email"></search-field>
+                            <advanced-search-field type="string" label="Nome" field="nome"></advanced-search-field>
+                            <advanced-search-field type="string" label="Email" field="email"></advanced-search-field>
+                        </gumga-query>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="full-width-without-padding">
+                    <gumga-list sort="pessoa.methods.sort(field, dir)"
+                                class="table-hover table-condensed"
+                                data="pessoa.data"
+                                page-size="pessoa.pageSize"
+                                page-position="bottom"
+                                page-align="flex-end"
+                                page-model="page"
+                                count="pessoa.count"
+                                on-page-change="pessoa.methods.searchWithGQuery(pessoa.lastGQuery, page)"
+                                configuration="tableConfig">
+                    </gumga-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

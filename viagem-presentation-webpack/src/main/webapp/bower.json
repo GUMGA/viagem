@@ -1,0 +1,15 @@
+{
+  "name": "sistema-viagem",
+  "version": "1.0",
+  "license": "CC BY-ND 4.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gumga-translate-ng": "*"
+  }
+}

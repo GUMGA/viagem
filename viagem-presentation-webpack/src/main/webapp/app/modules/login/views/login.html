@@ -1,0 +1,13 @@
+<gl-login-header
+        register="login.insert"
+        login="welcome"
+        forgot="login.forgot"
+        background="resources/images/background.png"
+        title="Gumga Viagem (PILOTO)"
+        menus="loginMenus"
+        logo="resources/images/gumgaLogo.png">
+</gl-login-header>
+
+
+<gl-login on-login="onLogin(user, organizations)" configuration="configuration" ng-show="configuration">
+</gl-login>

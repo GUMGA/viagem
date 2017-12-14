@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h3 class="modal-title">Rota</h3>
+</div>            
+<div class="modal-body" style="margin-bottom: 10%">
+    <form name="RotaForm" gumga-form novalidate>
+            <label gumga-translate-tag="rota.nome">viagem</label>
+            <gumga-many-to-one
+                    name="rota"
+                    value="rota.data.nome"
+                    search-method="searchRoute(param)"
+                    field="nome"
+                    authorize-add="true"
+                    display-info="false"
+                    post-method="viagem.methods.asyncPost(value, 'nome')">
+            </gumga-many-to-one>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" ng-click="cancel()" class="btn gmd btn-danger">Cancelar</button>
+    <button type="button" ng-click="ok(rota.data.nome)" class="btn gmd btn-success">Salvar</button>
+</div>

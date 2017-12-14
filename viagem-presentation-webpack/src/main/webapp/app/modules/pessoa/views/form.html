@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel gmd">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                        Pessoa
+                    </div>
+                    <div class="col-md-6">
+                        <span class=" btn pull-right" popover-placement="bottom-right" popover-trigger="'outsideClick'" popover-title="Componentes Utilizados."
+                              uib-popover-html="htmlPopover">
+                            <i class="material-icons">info_outline</i>
+                        </span> 
+                    </div>
+                </div>
+            </div>            
+			<div class="panel-body">
+                <form name="PessoaForm" gumga-form novalidate>
+                    <ul class="nav nav-tabs gmd" role="tablist" style="margin-bottom: 3%;">
+                        <li role="presentation" class="active"><a href="#principal" target="_self" aria-controls="principal" role="tab" data-toggle="tab">Dados Principais</a></li>
+                        <li role="presentation"><a href="#endereco" target="_self" aria-controls="endereco" role="tab" data-toggle="tab">Endereço</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="principal">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <gmd-input>
+                                        <input type="text" class="form-control gmd captalize" ng-model="pessoa.data.nome" name="nome" gumga-error gumga-required />
+                                        <span class="bar"></span>
+                                        <label for="nome" class="control-label" gumga-translate-tag="pessoa.nome">nome</label>
+                                    </gmd-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <gmd-input>
+                                        <input type="email" class="form-control gmd" ng-model="pessoa.data.email.value" name="email" id="email" ng-pattern='/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/' gumga-validate-type gumga-error />
+                                        <span class="bar"></span>
+                                        <label for="email" class="control-label" gumga-translate-tag="pessoa.email">email</label>
+                                    </gmd-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="endereco">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <gumga-address
+                                        value="pessoa.data.endereco"
+                                        name="endereco"
+                                        title="Preencha um endereço"
+                                        on-search-cep-success="success($value)"
+                                        street-number="true"
+                                        state-city="false"
+                                        state-city-ibge="true"
+                                        street="false">
+                                    </gumga-address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-12">
+                            <gumga-errors placement="right" icon="glyphicon glyphicon-info-sign" label="Campos inválidos" title="Campos inválidos"></gumga-errors>
+                        </div>
+                    </div>
+                </form>
+			</div>
+            <div class="panel-footer">
+                <gumga-form-buttons
+                        back="pessoa.list"
+                        submit="salvar(pessoa.data)"
+                        position="right"
+                        valid="PessoaForm.$valid"
+                        confirm-dirty="true"
+                        continue="continue">
+                </gumga-form-buttons>
+            </div>
+		</div>
+	</div>
+</div>

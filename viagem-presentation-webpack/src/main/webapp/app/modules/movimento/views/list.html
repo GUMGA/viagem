@@ -1,0 +1,57 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="row">
+			<div class="col-md-5">
+				<h5 class="title-page"> 
+					<i class="material-icons" middle>attach_money</i> 
+					<p>Movimentos</p>
+				</h5>
+			</div>
+			<div class="col-md-7">
+				<gumga-query use-gquery="true" class="gmd" search="movimento.methods.searchWithGQuery(field,param)" advanced-search="movimento.methods.searchWithGQuery(param)"
+                saved-filters="movimento.methods.getQuery(page)">
+                    <search-field label="Viagem" field="viagem.nome"></search-field>
+                    <search-field label="Fornecedor" field="fornecedor.nome"></search-field>
+                    <search-field label="Valor" field="valor"></search-field>
+                    <advanced-search-field type="string" label="Viagem" field="viagem.nome"></advanced-search-field>
+                    <advanced-search-field type="string" label="Fornecedor" field="fornecedor.nome"></advanced-search-field>
+                    <advanced-search-field type="number" label="Valor" field="valor"></advanced-search-field>s
+                </gumga-query>
+			</div>
+		</div>
+
+		<br>
+
+		<div class="row">
+			<div class="col-md-12">
+                <gumga-list sort="movimento.methods.sort(field, dir)" 
+                    class="table-hover table-condensed" 
+                    data="movimento.data" 
+                    page-align="flex-end"
+                    page-position="bottom" 
+                    configuration="tableConfig" 
+                    page-model="page" 
+                    page-size="movimento.pageSize" 
+                    count="movimento.count"
+                    on-page-change="movimento.methods.searchWithGQuery(movimento.lastGQuery, page)">
+				</gumga-list>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<gmd-fab force-click="false" fixed opened="selectedValues.length > 0">
+	<button ng-if="selectedValues.length == 0" class="btn-primary gmd-ripple" ui-sref="movimento.insert">
+		<span class="material-icons">add</span>
+	</button>
+	<button ng-if="selectedValues.length > 0" class="btn-warning gmd-ripple">
+		<span class="material-icons">view_headline</span>
+	</button>
+	<ul ng-class="{'disabled-fab': selectedValues.length <= 0}">
+		<li class="btn-danger" ng-click="movimento.methods.delete(selectedValues)">
+			<span class="visible">Remover</span>
+			<i class="material-icons gmd-ripple">delete</i>
+		</li>
+	</ul>
+</gmd-fab>

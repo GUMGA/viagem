@@ -1,0 +1,8 @@
+require("../resources/font-awesome/css/font-awesome.min.css")
+require("../node_modules/bootstrap/dist/css/bootstrap.min.css")
+require("../resources/styles/css/reset.css")
+require("../resources/styles/css/gumga/gumga.min.css")
+require("../node_modules/animate.css/animate.min.css")
+require("../gumga-layout/gumga-layout.min.css")
+require("../resources/styles/css/personalize.css")
+require("../resources/styles/css/gumga/login.css")

@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="row">
+			<div class="col-md-5">
+			<h5 class="title-page">
+				<i class="material-icons" middle>place</i>
+				<p>Destinos</p>
+			</h5>
+			</div>
+			<div class="col-md-7">
+				<gumga-query use-gquery="true" class="gmd" search="destino.methods.searchWithGQuery(field,param)" advanced-search="destino.methods.searchWithGQuery(param)"
+				 saved-filters="destino.methods.getQuery(page)">
+					<search-field label="nome" field="nome"></search-field>
+					<advanced-search-field type="string" label="nome" field="obj.nome"></advanced-search-field>
+				</gumga-query>
+			</div>
+		</div>
+
+		<br>
+
+		<div class="row">
+			<div class="col-md-12">
+				<gumga-list sort="destino.methods.sort(field, dir)" class="table-hover table-condensed" data="destino.data" page-align="flex-end"
+				 page-position="bottom" configuration="tableConfig" page-model="page" page-size="destino.pageSize" count="destino.count"
+				 on-page-change="destino.methods.searchWithGQuery(destino.lastGQuery, page)">
+				</gumga-list>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<gmd-fab force-click="false" fixed opened="selectedValues.length > 0">
+	<button ng-if="selectedValues.length == 0" class="btn-primary gmd-ripple" ui-sref="destino.insert">
+		<span class="material-icons">add</span>
+	</button>
+	<button ng-if="selectedValues.length > 0" class="btn-warning gmd-ripple">
+		<span class="material-icons">view_headline</span>
+	</button>
+	<ul ng-class="{'disabled-fab': selectedValues.length <= 0}">
+		<li class="btn-danger" ng-click="destino.methods.delete(selectedValues)">
+			<span class="visible">Remover</span>
+			<i class="material-icons gmd-ripple">delete</i>
+		</li>
+	</ul>
+</gmd-fab>
