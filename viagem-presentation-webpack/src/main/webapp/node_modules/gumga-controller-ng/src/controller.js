@@ -68,6 +68,9 @@ import { QueryObject } from './query-object';
         if(!operation){
             self.methods.get(self.storage.get('page'), self.storage.get('pageSize'));
         }
+        if(!self.count){
+            self.count = Number(self.storage.get('count'));
+        }
         switch (operation) {
           case 'get':
             self.methods.get(self.storage.get('page'), self.storage.get('pageSize'));
@@ -83,6 +86,20 @@ import { QueryObject } from './query-object';
             break;
           case 'advancedSearch':
             self.methods.advancedSearch(JSON.parse(self.storage.get('param')), self.storage.get('pageSize'), self.storage.get('page'));
+            break;
+          case 'searchWithGQuery':
+            try{
+              self.methods.searchWithGQuery(JSON.parse(self.storage.get('gQuery')), self.storage.get('page'), self.storage.get('pageSize'));
+            }catch(e){
+              self.methods.searchWithGQuery(undefined, self.storage.get('page'), self.storage.get('pageSize'));
+            }
+            break;
+          case 'asyncSearchWithGQuery':
+            try{
+              self.methods.asyncSearchWithGQuery(JSON.parse(self.storage.get('gQuery')), self.storage.get('page'), self.storage.get('pageSize'));
+            }catch(e){
+              self.methods.asyncSearchWithGQuery(undefined, self.storage.get('page'), self.storage.get('pageSize'));
+            }
             break;
           default:
             self.methods.get(self.storage.get('page'), self.storage.get('pageSize'));
@@ -110,6 +127,7 @@ import { QueryObject } from './query-object';
         if(!page) page = self.page;
         const storage = self.handlingStorage(page, pageSize);
         self.storage.set('last-operation', 'get');
+        if(self.count > 0) self.storage.set('count',    self.count);
         self.emit('getStart');
         Service
           .get(page, pageSize)
@@ -117,7 +135,9 @@ import { QueryObject } from './query-object';
             self.emit('getSuccess', data.data);
             self.data = data.data.values;
             self.pageSize = data.data.pageSize;
+            if(data.data.count > 0) self.storage.set('count',    data.data.count);
             if(data.data.count > 0 && page <= 1) self.count = data.data.count;
+            if(!data.data.count) data.data.count = Number(self.storage.get('count'));
             self.storage.set('pageSize', data.data.pageSize);
             self.data.map(record => self.records.push(record.id))
           }, (err) => { self.emit('getError', err); })
@@ -179,6 +199,7 @@ import { QueryObject } from './query-object';
         const storage = self.handlingStorage(undefined, pageSize, field, way);
         const page    = storage.page;
         self.storage.set('last-operation', 'sort');
+        if(self.count > 0) self.storage.set('count',    self.count);
         self.emit('sortStart');
         Service
           .sort(field, way, pageSize, page)
@@ -186,7 +207,9 @@ import { QueryObject } from './query-object';
             self.emit('sortSuccess', data.data);
             self.data = data.data.values;
             self.pageSize = data.data.pageSize;
+            if(data.data.count > 0) self.storage.set('count',    data.data.count);
             if(data.data.count > 0 && page <= 1) self.count = data.data.count;
+            if(!data.data.count) data.data.count = Number(self.storage.get('count'));
             self.storage.set('pageSize', data.data.pageSize);
           }, (err) => { self.emit('sortError', err); })
         return self;
@@ -196,6 +219,7 @@ import { QueryObject } from './query-object';
         if(!page) page = self.page;
         const storage = self.handlingStorage(page, pageSize, field, undefined, param);
         self.storage.set('last-operation', 'search');
+        if(self.count > 0) self.storage.set('count',    self.count);
         self.emit('searchStart');
         Service
           .getSearch(field, param, pageSize, page)
@@ -203,7 +227,9 @@ import { QueryObject } from './query-object';
             self.emit('searchSuccess', data.data);
             self.data = data.data.values;
             self.pageSize = data.data.pageSize;
+            if(data.data.count > 0) self.storage.set('count',    data.data.count);
             if(data.data.count > 0 && page <= 1) self.count = data.data.count;
+            if(!data.data.count) data.data.count = Number(self.storage.get('count'));
             self.storage.set('pageSize', data.data.pageSize);
           }, (err) => { self.emit('searchError', err); })
         return self;
@@ -213,6 +239,7 @@ import { QueryObject } from './query-object';
         if(!page) page = self.page;
         const storage = self.handlingStorage(page, pageSize, undefined, undefined, JSON.stringify(param));
         self.storage.set('last-operation', 'advancedSearch');
+        if(self.count > 0) self.storage.set('count',    self.count);
         self.emit('advancedSearchStart');
         Service
           .getAdvancedSearch(param, pageSize, page)
@@ -220,7 +247,9 @@ import { QueryObject } from './query-object';
             self.emit('advancedSearchSuccess', data.data);
             self.data = data.data.values;
             self.pageSize = data.data.pageSize;
+            if(data.data.count > 0) self.storage.set('count',    data.data.count);
             if(data.data.count > 0 && page <= 1) self.count = data.data.count;
+            if(!data.data.count) data.data.count = Number(self.storage.get('count'));
             self.storage.set('pageSize', data.data.pageSize);
           }, (err) => { self.emit('advancedSearchError', err); })
         return self;
@@ -228,6 +257,11 @@ import { QueryObject } from './query-object';
       searchWithGQuery(gQuery, page, pageSize){
         if(!pageSize) pageSize = self.pageSize;
         if(!page) page = self.page;
+        self.storage.set('pageSize',    pageSize);
+        self.storage.set('page',    page);
+        if(self.count > 0) self.storage.set('count',    self.count);
+        if(gQuery) self.storage.set('gQuery',    JSON.stringify(gQuery));
+        self.storage.set('last-operation', 'searchWithGQuery');
         self.lastGQuery = gQuery;
         self.emit('searchWithGQueryStart');
         return Service
@@ -236,20 +270,29 @@ import { QueryObject } from './query-object';
             self.emit('searchWithGQuerySuccess', data.data);
             self.data = data.data.values;
             self.pageSize = data.data.pageSize;
+            if(data.data.count > 0) self.storage.set('count',    data.data.count);
             if(data.data.count > 0 && page <= 1) self.count = data.data.count;
+            if(!data.data.count) data.data.count = Number(self.storage.get('count'));
           }, (err) => { self.emit('searchWithGQueryError', err); })        
       },
       asyncSearchWithGQuery(gQuery, page, pageSize){
         if(!pageSize) pageSize = self.pageSize;
         if(!page) page = self.page;
         self.lastGQuery = gQuery;
+        if(self.count > 0) self.storage.set('count',    self.count);
+        self.storage.set('pageSize',    pageSize);
+        self.storage.set('page',    page);
+        if(gQuery) self.storage.set('gQuery',    JSON.stringify(gQuery));
+        self.storage.set('last-operation', 'asyncSearchWithGQuery');
         self.emit('asyncSearchWithGQuery');
         return Service
           .searchWithGQuery(gQuery, page, pageSize)
           .then((data) => {
             self.emit('asyncSearchWithGQuery', data.data);
             self.pageSize = data.data.pageSize;
+            if(data.data.count > 0) self.storage.set('count',    data.data.count);
             if(data.data.count > 0 && page <= 1) self.count = data.data.count;
+            if(!data.data.count) data.data.count = Number(self.storage.get('count'));
             return data.data.values
           }, (err) => { self.emit('asyncSearchWithGQuery', err); })        
       },

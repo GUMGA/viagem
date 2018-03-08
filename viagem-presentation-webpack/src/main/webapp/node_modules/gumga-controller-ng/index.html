@@ -48,7 +48,7 @@
                       page-align="flex-end"
                       count="pessoa.count"
                       page-model="page"
-                      on-page-change="buscar(page, pessoa.pageSize, field, dir)"
+                      on-page-change="pessoa.methods.searchWithGQuery(pessoa.lastGQuery, page, pessoa.pageSize)"
             ></gumga-list>
         </div>
       </form>
@@ -66,11 +66,11 @@
   <script>
     angular.module('yourApp', ['gumga.rest','gumga.controller','gumga.list'])
       .config(function ($httpProvider) {
-        $httpProvider.defaults.headers.common['gumgaToken'] = 'eterno'
+        $httpProvider.defaults.headers.common['gumgaToken'] = '2L3E1513684668974O3.I'
       })
       .controller('restCtrl', ['gumgaController', 'GumgaRest', '$scope', '$http', '$q',
         function (gumgaController, GumgaRest, $scope, $http, $q) {
-          var PessoaService = new GumgaRest('http://192.168.253.246:8084/security-api/api/organization');
+          var PessoaService = new GumgaRest('http://192.168.112.239:8084/mobiage-api/api/product');
 
           gumgaController.createRestMethods($scope, PessoaService, 'pessoa');
 
@@ -78,12 +78,10 @@
             $scope.pessoa.methods.createQuery()
                        .pageSize(pageSize)
                        .page(page)
-                      //  .sort(field, dir)
-                      //  .gQuery(new GQuery(new Criteria('name', ComparisonOperator.CONTAINS, 'ma')))
                        .send();
           }
 
-          $scope.buscar(1, 4, 'name', 'desc');
+          $scope.pessoa.methods.getLatestOperation();
 
           $scope.tableConfig = {
           columns: 'id, name, login',

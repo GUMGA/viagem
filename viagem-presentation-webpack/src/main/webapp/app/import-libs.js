@@ -21,7 +21,7 @@ require("script-loader!../node_modules/gumga-alert-ng/dist/gumga-alert.min");
 require("script-loader!../node_modules/gumga-web-storage-ng/dist/gumga-web-storage.min");
 require("script-loader!../node_modules/gumga-many-to-one-ng/dist/gumga-many-to-one.min");
 require("script-loader!../node_modules/gumga-address-ng/dist/gumga-address.min");
-require("script-loader!../bower_components/gumga-translate-ng/dist/gumga-translate.min");
+require("script-loader!../node_modules/gumga-translate-ng/dist/gumga-translate.min");
 require("script-loader!../node_modules/gumga-mask-ng/dist/gumga-mask.min");
 require("script-loader!../node_modules/gumga-upload-ng/dist/gumga-upload.min");
 require("script-loader!../node_modules/gumga-custom-fields-ng/dist/gumga-custom-fields.min");

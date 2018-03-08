@@ -43,47 +43,68 @@
         element,
         image
 
-      $timeout(function () {
-        element = $element.find('input'),
-          image = $element.find('img')[0];
 
-        element.bind('change', function () {
-          $scope.$apply(function () {
-            let x;
-            modelSetter($scope, element[0].files[0]);
-            $scope.flag = false;
-            reader.onloadend = function () {
-              image.src = reader.result;
 
-              image.width = $scope.imageWidth || 128;
-              image.height = $scope.imageHeight || 128;
-              let x = $attrs.attribute.split('.');
-              $scope.uploadMethod({ image: $scope[x[0]][x[1]] })
-                .then((val) => {
-                  $scope.model.name = val.data;
-                });
-            };
-            reader.readAsDataURL(element[0].files[0]);
+      const init = () => {
+        $timeout(function () {
+          element = $element.find('input'),
+            image = $element.find('img')[0];
+  
+          element.bind('change', function () {
+            $scope.$apply(function () {
+              let x;
+              modelSetter($scope, element[0].files[0]);
+              $scope.flag = false;
+              reader.onloadend = function () {
+                image.src = reader.result;
+  
+                image.width = $scope.imageWidth || 128;
+                image.height = $scope.imageHeight || 128;
+                let x = $attrs.attribute.split('.');
+                $scope.uploadMethod({ image: $scope[x[0]][x[1]] })
+                  .then((val) => {
+                    $scope.model.name = val.data;
+                  });
+              };
+              reader.readAsDataURL(element[0].files[0]);
+            });
           });
         });
-      });
+      }
 
+      const initOnImageLoad = () => {
+        image = $element.find('img')[0];
+        if(image){
+          init();
+          onModelModify();
+        }else{
+          $timeout(() => initOnImageLoad());
+        }
+      }
+
+      initOnImageLoad();
 
       $scope.fireClick = function () {
         $element.find('input')[0].click();
       }
 
-      $scope.$watch('model', () => {
+      function onModelModify(){
         if ($scope.model) {
           if ($scope.model.bytes) {
             $scope.flag = false;
-            image.src = 'data:' + $scope.model.mimeType + ';base64,' + $scope.model.bytes;
-            image.width = $scope.imageWidth || 128;
-            image.height = $scope.imageHeight || 128;
+            if(image){
+              image.src = 'data:' + $scope.model.mimeType + ';base64,' + $scope.model.bytes;
+              image.width = $scope.imageWidth || 128;
+              image.height = $scope.imageHeight || 128;
+            }
           }
         } else {
           $scope.model = {};
         }
+      }
+
+      $scope.$watch('model', () => {
+        onModelModify();
       });
 
       if (!$attrs.attribute) console.error('You must pass an attribute to GumgaUpload')

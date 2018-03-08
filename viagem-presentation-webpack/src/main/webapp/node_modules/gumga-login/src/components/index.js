@@ -1,4 +1,5 @@
 import Login        from './login/component.js'
+import Register        from './register/register.js'
 import GumgaLoginService        from './login/service.js'
 import LoginHeader  from './header/component.js'
 import Facebook  from './facebook/component.js'
@@ -12,6 +13,7 @@ require('../stylesheets/login.css');
 angular
   .module('gumga.login', ['googleplus'])
   .component('glLogin', Login)
+  .component('glRegister', Register)
   .component('glLoginHeader', LoginHeader)
   .component('glLoginFacebook', Facebook)
   .component('glLoginGoogle', Google)
